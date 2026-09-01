@@ -36,5 +36,27 @@ const cv = {
     { year: '2018', detail: 'Artist Eye, Printmaking Today Magazine, Issue 107 Vol 27 no 3 Autumn 2018' }
   ]
 };
+
+// Sub-components
+ 
+interface CvEntry {
+  year: string;
+  detail: string;
+}
+ 
+function CvSection({
+  heading,
+  entries,
+}: {
+  heading: string;
+  entries: CvEntry[];
+}) {
+  return (
+    <section className="cv-section">
+      
+    </section>
+  );
+}
+ 
  
 export default AboutPage;
