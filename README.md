@@ -1,6 +1,6 @@
 # Artist Site
 
-A minimalist portfolio website for an engraving artist. Built as a full-stack TypeScript monorepo — Express + Prisma backend, React + Vite frontend.
+A minimalist portfolio website for an artist. Built as a full-stack TypeScript monorepo — Express + Prisma backend, React + Vite frontend.
 
 # Project structure
 
