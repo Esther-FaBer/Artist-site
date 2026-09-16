@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Environment variables — never commit these
+.env
+
+# TypeScript build output
+dist/
+
+# Mac OS
+.DS_Store
+
+
+.claude/
+.agents/
+.windsurf/
