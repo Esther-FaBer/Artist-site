@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express'
-import prisma from '../lib/prisma'
+import { query } from '../lib/db'
 
 const router = Router()
 
@@ -9,35 +9,32 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { type, isFeatured } = req.query as Record<string, string>
 
-    const where = {
-      ...(type       && { type: type as any }),
-      ...(isFeatured === 'true' && { isFeatured: true }),
+    const conditions: string[] = []
+    const params: unknown[]    = []
+
+    if (type) {
+      params.push(type)
+      conditions.push(`e.type = $${params.length}`)
+    }
+    if (isFeatured === 'true') {
+      conditions.push(`e.is_featured = TRUE`)
     }
 
-    const exhibitions = await prisma.exhibition.findMany({
-      where,
-      orderBy: { startDate: 'desc' },
-      include: {
-        artworks: {
-          include: {
-            artwork: {
-              include: {
-                medium: true
-              }
-            }
-          }
-        }
-      }
-    })
+    const whereClause = conditions.length > 0
+      ? `WHERE ${conditions.join(' AND ')}`
+      : ''
 
-    const now = new Date()
-    const withUpcoming = exhibitions.map(exhibition => ({
-      ...exhibition,
-      isUpcoming: exhibition.startDate > now,
-      isCurrentlyOn: exhibition.startDate <= now && exhibition.endDate >= now,
-    }))
+    const result = await query(`
+      SELECT
+        e.*,
+        e.start_date <= NOW() AND e.end_date >= NOW() AS is_currently_on,
+        e.start_date > NOW()                          AS is_upcoming
+      FROM exhibitions e
+      ${whereClause}
+      ORDER BY e.start_date DESC
+    `, params)
 
-    res.json(withUpcoming)
+    res.json(result.rows)
   } catch (err) {
     next(err)
   }
@@ -47,32 +44,25 @@ router.get('/', async (req: Request, res: Response, next: NextFunction) => {
 
 router.get('/current', async (_req: Request, res: Response, next: NextFunction) => {
   try {
-    const now = new Date()
+    const result = await query(`
+      SELECT
+        e.*,
+        e.start_date <= NOW() AND e.end_date >= NOW() AS is_currently_on,
+        e.start_date > NOW()                          AS is_upcoming
+      FROM exhibitions e
+      WHERE e.is_featured = TRUE
+      ORDER BY e.start_date DESC
+      LIMIT 1
+    `)
 
-    const exhibition = await prisma.exhibition.findFirst({
-      where: {
-        isFeatured: true,
-      },
-      orderBy: { startDate: 'desc' },
-      include: {
-        artworks: {
-          include: {
-            artwork: true
-          }
-        }
-      }
-    })
+    const exhibition = result.rows[0]
 
     if (!exhibition) {
       res.status(404).json({ error: 'No current exhibition found' })
       return
     }
 
-    res.json({
-      ...exhibition,
-      isUpcoming: exhibition.startDate > now,
-      isCurrentlyOn: exhibition.startDate <= now && exhibition.endDate >= now,
-    })
+    res.json(exhibition)
   } catch (err) {
     next(err)
   }
@@ -82,34 +72,40 @@ router.get('/current', async (_req: Request, res: Response, next: NextFunction) 
 
 router.get('/:slug', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const exhibition = await prisma.exhibition.findUnique({
-      where: { slug: req.params.slug },
-      include: {
-        artworks: {
-          include: {
-            artwork: {
-              include: {
-                medium: true,
-                series: true,
-              }
-            }
-          }
-        }
-      }
-    })
+    const result = await query(`
+      SELECT
+        e.*,
+        e.start_date <= NOW() AND e.end_date >= NOW() AS is_currently_on,
+        e.start_date > NOW()                          AS is_upcoming,
+        COALESCE(
+          JSON_AGG(
+            JSON_BUILD_OBJECT(
+              'id',            a.id,
+              'title',         a.title,
+              'slug',          a.slug,
+              'year',          a.year,
+              'image_url',     a.image_url,
+              'thumbnail_url', a.thumbnail_url,
+              'status',        a.status
+            )
+          ) FILTER (WHERE a.id IS NOT NULL),
+          '[]'
+        ) AS artworks
+      FROM exhibitions e
+      LEFT JOIN artwork_exhibitions ae ON ae.exhibition_id = e.id
+      LEFT JOIN artworks a             ON a.id = ae.artwork_id
+      WHERE e.slug = $1
+      GROUP BY e.id
+    `, [req.params.slug])
+
+    const exhibition = result.rows[0]
 
     if (!exhibition) {
       res.status(404).json({ error: 'Exhibition not found' })
       return
     }
 
-    const now = new Date()
-
-    res.json({
-      ...exhibition,
-      isUpcoming: exhibition.startDate > now,
-      isCurrentlyOn: exhibition.startDate <= now && exhibition.endDate >= now,
-    })
+    res.json(exhibition)
   } catch (err) {
     next(err)
   }
