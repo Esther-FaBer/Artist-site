@@ -1,22 +1,24 @@
 {
   "name": "artist-site-backend",
   "version": "1.0.0",
-  "description": "Express + Prisma REST API for the artist portfolio site",
+  "description": "Express REST API for the artist portfolio site",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
     "start": "node dist/index.js",
-    "db:migrate": "prisma migrate dev",
-    "db:seed": "ts-node prisma/seed.ts",
-    "db:studio": "prisma studio"
+    "db:setup": "ts-node src/db/schema.ts",
+    "db:seed": "ts-node src/db/seed.ts"
+  },
+  "overrides": {
+  "braces": "^3.0.3"
   },
   "dependencies": {
-    "@prisma/client": "^5.14.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-    "nodemailer": "^10.0.10",
+    "nodemailer": "^10.0.15",
+    "pg": "^8.11.5",
     "slugify": "^1.6.6",
     "stripe": "^15.7.0"
   },
@@ -26,8 +28,8 @@
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.2",
     "@types/nodemailer": "^6.4.15",
-    "nodemon": "^3.1.3",
-    "prisma": "^5.14.0",
+    "@types/pg": "^8.11.6",
+    "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   }
