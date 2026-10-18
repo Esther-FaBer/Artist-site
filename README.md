@@ -9,6 +9,22 @@ artist-site/
 
 ¬seed.ts -sample data dev
 
+## Tech stack
+
+| Layer             | Technology                    |
+| ----------------- | ----------------------------- |
+| Backend runtime   | Node.js + TypeScript          |
+| Backend framework | Express                       |
+| Database          | PostgreSQL                    |
+| Database client   | pg                            |
+| Frontend          | React 18 + TypeScript         |
+| Build tool        | Vite                          |
+| Styling           | Plain CSS + custom properties |
+| HTTP client       | Axios                         |
+| Routing           | React Router DOM v6           |
+
+---
+
 ## Prerequisites
 
 - Node.js 20+
@@ -42,6 +58,10 @@ Open `.env` and fill in:
 DATABASE_URL="postgresql://postgres@localhost:5432/artist_site"
 PORT=4000
 NODE_ENV=development
+
+FRONTEND_URL=http://localhost:5173
+
+```
 
 ### 3. Set up the database
 
@@ -81,10 +101,10 @@ Vite proxies all `/api/*` requests to `http://localhost:4000` automatically — 
 ## Backend scripts
 
 ```bash
-npm run dev        # Start dev server with hot reload (nodemon + ts-node)
-npm run build      # Compile TypeScript to dist/
-npm run db:setup   # Create all database tables
-npm run db:seed    # Populate with example data
+npm run dev # Start dev server with hot reload (nodemon + ts-node)
+npm run build # Compile TypeScript to dist/
+npm run db:setup # Create all database tables
+npm run db:seed # Populate with example data
 ```
 
 > Run all backend scripts from inside the `backend/` directory.
@@ -94,3 +114,37 @@ npm run db:seed    # Populate with example data
 > Run all backend scripts from inside the `backend/` directory.
 
 ---
+
+### Artworks
+
+```
+GET  /api/artworks                       All artworks, paginated
+GET  /api/artworks?isFeatured=true       Featured artworks (landing carousel)
+GET  /api/artworks?seriesSlug=studies    Filter by series
+GET  /api/artworks?search=untitled       Full-text search
+GET  /api/artworks/series                All series
+GET  /api/artworks/media                 All mediums
+GET  /api/artworks/:slug                 Single artwork
+```
+
+### Exhibitions
+
+```
+GET  /api/exhibitions                    All exhibitions, newest first
+GET  /api/exhibitions/current            Currently featured exhibition
+GET  /api/exhibitions/:slug              Single exhibition with artworks
+```
+
+### Posts
+
+```
+GET  /api/posts                          Published posts only
+GET  /api/posts?type=PRESS               Filter by type (NEWS, PRESS, TEXT)
+GET  /api/posts/:slug                    Single post with full body
+```
+
+### Contact
+
+```
+POST /api/contact                        Submit an enquiry
+```
