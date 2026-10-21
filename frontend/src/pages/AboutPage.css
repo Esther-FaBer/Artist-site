@@ -1,0 +1,101 @@
+/* ─── About Page ───────────────────────────────────────────────── */
+
+.about-page {
+  padding-top: calc(var(--header-height) + 56px);
+  padding-bottom: 80px;
+}
+
+/* Bio ────────────────────────────────────────────────────────────── */
+
+.about-bio {
+  margin-bottom: 64px;
+}
+
+.about-bio__section {
+  margin-bottom: 32px;
+}
+
+.about-bio__section:last-child {
+  margin-bottom: 0;
+}
+
+.about-bio__heading {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin: 0 0 12px;
+}
+
+.about-bio__body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* CV ─────────────────────────────────────────────────────────────── */
+
+.about-cv {
+  border-top: 1px solid var(--color-border);
+  padding-top: 48px;
+}
+
+.about-cv__title {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-caption);
+  margin: 0 0 40px;
+}
+
+.about-cv__group {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0 32px;
+  margin-bottom: 24px;
+  align-items: baseline;
+}
+
+.about-cv__heading {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.8125rem;
+  color: var(--color-caption);
+  margin: 0;
+  padding-top: 2px; /* optical alignment with body baseline */
+}
+
+.about-cv__body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin: 0;
+  white-space: pre-line; /* preserves newlines in seed data for multi-line CV entries */
+}
+
+/* Mobile ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .about-page {
+    padding-top: calc(var(--header-height) + 32px);
+    padding-bottom: 56px;
+  }
+
+  .about-cv__group {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    margin-bottom: 28px;
+  }
+
+  .about-cv__heading {
+    font-size: 0.75rem;
+  }
+}
