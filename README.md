@@ -1,6 +1,6 @@
 # Artist Site
 
-A minimalist portfolio website for an artist. Built as a full-stack TypeScript monorepo — Node.js + Express + PostgreSQL backend, React + Vite frontend.
+A minimalist portfolio website for an artist. Full-stack TypeScript monorepo — Node.js + Express + PostgreSQL backend, React + Vite frontend.
 
 # Project structure
 
@@ -22,13 +22,14 @@ artist-site/
 | Styling           | Plain CSS + custom properties |
 | HTTP client       | Axios                         |
 | Routing           | React Router DOM v6           |
+| Auth              | JSON Web Tokens               |
 
 ---
 
 ## Prerequisites
 
 - Node.js 20+
-- PostgreSQL running locally (or a connection string from Railway/Neon/Supabase)
+- PostgreSQL running locally (or a connection string from Supabase)
 
 ## Getting started
 
@@ -54,13 +55,13 @@ cp .env.example .env
 
 Open `.env` and fill in:
 
-````env
+```env
 DATABASE_URL="postgresql://postgres@localhost:5432/artist_site"
 PORT=4000
 NODE_ENV=development
 
-FRONTEND_URL=http://localhost:5173
 
+FRONTEND_URL=http://localhost:5173
 ```
 
 ### 3. Set up the database
@@ -76,7 +77,7 @@ npm run db:setup
 
 # Seed with example data
 npm run db:seed
-````
+```
 
 ### 4. Start the backend
 
@@ -115,16 +116,23 @@ npm run db:seed # Populate with example data
 
 ---
 
+## API endpoints
+
 ### Artworks
 
 ```
 GET  /api/artworks                       All artworks, paginated
-GET  /api/artworks?isFeatured=true       Featured artworks (landing carousel)
+GET  /api/artworks?seriesSlug=etchings   Filter by series
 GET  /api/artworks?seriesSlug=studies    Filter by series
-GET  /api/artworks?search=untitled       Full-text search
+GET  /api/artworks?isFeatured=true       Featured works (landing page)
 GET  /api/artworks/series                All series
-GET  /api/artworks/media                 All mediums
 GET  /api/artworks/:slug                 Single artwork
+```
+
+### Bio
+
+```
+GET  /api/bio                            All bio sections, ordered
 ```
 
 ### Exhibitions
@@ -132,14 +140,13 @@ GET  /api/artworks/:slug                 Single artwork
 ```
 GET  /api/exhibitions                    All exhibitions, newest first
 GET  /api/exhibitions/current            Currently featured exhibition
-GET  /api/exhibitions/:slug              Single exhibition with artworks
 ```
 
 ### Posts
 
 ```
 GET  /api/posts                          Published posts only
-GET  /api/posts?type=PRESS               Filter by type (NEWS, PRESS, TEXT)
+GET  /api/posts?type=PRESS               Filter by type
 GET  /api/posts/:slug                    Single post with full body
 ```
 
@@ -148,3 +155,11 @@ GET  /api/posts/:slug                    Single post with full body
 ```
 POST /api/contact                        Submit an enquiry
 ```
+
+### Health check
+
+```
+GET  /health                             Returns { status: "ok" }
+```
+
+---
