@@ -1,0 +1,68 @@
+/* ─── Etchings Page ─────────────────────────────────────────────── */
+
+.etchings-page {
+  /* No padding — sections handle their own spacing */
+}
+
+/* Each artwork occupies its own screen height */
+.etchings-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 0 80px;
+  /* Separator between works */
+  border-bottom: 1px solid var(--color-border);
+}
+
+.etchings-section:last-child {
+  border-bottom: none;
+}
+
+/* Image */
+.etchings-section__image-wrap {
+  display: flex;
+  justify-content: flex-start; /* left-aligned */
+  margin-bottom: 20px;
+}
+
+.etchings-section__img {
+  max-height: calc(100vh - 180px);
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Caption — sits below the image, left-aligned */
+.etchings-section__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.etchings-section__title {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  font-style: italic;
+}
+
+.etchings-section__meta {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.75rem;
+  color: var(--color-caption);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .etchings-section {
+    padding: 40px 0 60px;
+    min-height: auto;
+  }
+
+  .etchings-section__img {
+    max-height: 70vh;
+  }
+}
