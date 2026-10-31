@@ -4,6 +4,7 @@ import type {
   Exhibition,
   Post,
   BioSection,
+  Series,
   PaginatedResponse,
   ContactFormData,
 } from "./types/index";
@@ -12,29 +13,23 @@ const api = axios.create({
   baseURL: "/api",
 });
 
-// Artworks
+// Works (etchings + studies)
 
 export interface ArtworkFilters {
   page?: number;
-  pageSize?: number;
+  limit?: number;
   seriesSlug?: string;
-  status?: string;
-  isFeatured?: boolean;
   search?: string;
 }
 
 export function fetchArtworks(
   filters?: ArtworkFilters,
 ): Promise<PaginatedResponse<Artwork>> {
-  return api.get("/artworks", { params: filters }).then((res) => res.data);
-}
-
-export function fetchArtwork(slug: string): Promise<Artwork> {
-  return api.get(`/artworks/${slug}`).then((res) => res.data);
+  return api.get("/works", { params: filters }).then((res) => res.data);
 }
 
 export function fetchSeries(): Promise<Series[]> {
-  return api.get("/artworks/series").then((res) => res.data);
+  return api.get("/works/series").then((res) => res.data);
 }
 
 // Exhibitions
@@ -43,15 +38,7 @@ export function fetchExhibitions(): Promise<Exhibition[]> {
   return api.get("/exhibitions").then((res) => res.data);
 }
 
-export function fetchCurrentExhibition(): Promise<Exhibition> {
-  return api.get("/exhibitions/current").then((res) => res.data);
-}
-
-export function fetchExhibition(slug: string): Promise<Exhibition> {
-  return api.get(`/exhibitions/${slug}`).then((res) => res.data);
-}
-
-// Posts
+// Posts / News
 
 export function fetchPosts(): Promise<Post[]> {
   return api.get("/posts").then((res) => res.data);

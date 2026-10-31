@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 
-import artworksRouter from "./routes/artworks";
+import worksRouter from "./routes/works";
 import exhibitionsRouter from "./routes/exhibitions";
 import postsRouter from "./routes/posts";
 import contactRouter from "./routes/contact";
@@ -25,7 +25,7 @@ app.use(
 
 // Routes
 
-app.use("/api/artworks", artworksRouter);
+app.use("/api/works", worksRouter);
 app.use("/api/exhibitions", exhibitionsRouter);
 app.use("/api/posts", postsRouter);
 app.use("/api/contact", contactRouter);
