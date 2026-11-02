@@ -1,9 +1,5 @@
 /* ─── Etchings Page ─────────────────────────────────────────────── */
 
-.etchings-page {
-  /* No padding — sections handle their own spacing */
-}
-
 /* Each artwork occupies its own screen height */
 .etchings-section {
   min-height: 100vh;

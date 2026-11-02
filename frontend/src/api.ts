@@ -15,7 +15,7 @@ const api = axios.create({
 
 // Works (etchings + studies)
 
-export interface ArtworkFilters {
+export interface workFilters {
   page?: number;
   limit?: number;
   seriesSlug?: string;
@@ -23,7 +23,7 @@ export interface ArtworkFilters {
 }
 
 export function fetchArtworks(
-  filters?: ArtworkFilters,
+  filters?: workFilters,
 ): Promise<PaginatedResponse<Artwork>> {
   return api.get("/works", { params: filters }).then((res) => res.data);
 }

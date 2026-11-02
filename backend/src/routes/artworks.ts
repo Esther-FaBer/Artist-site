@@ -3,7 +3,7 @@ import { query } from "../lib/db";
 
 const router = Router();
 
-// GET /api/works
+// GET /api/artworks
 router.get("/", async (req, res, next) => {
   try {
     const { page = "1", limit = "20", seriesSlug, search } = req.query;
@@ -80,7 +80,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-// GET /api/works/series
+// GET /api/artworks/series
 router.get("/series", async (_req, res, next) => {
   try {
     const result = await query(
@@ -102,7 +102,7 @@ router.get("/series", async (_req, res, next) => {
   }
 });
 
-// GET /api/works/media
+// GET /api/artworks/media
 router.get("/media", async (_req, res, next) => {
   try {
     const result = await query(`SELECT * FROM media ORDER BY name ASC`);
@@ -112,7 +112,7 @@ router.get("/media", async (_req, res, next) => {
   }
 });
 
-// GET /api/works/:slug
+// GET /api/artworks/:slug
 router.get("/:slug", async (req, res, next) => {
   try {
     const result = await query(
