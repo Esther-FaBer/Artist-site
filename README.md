@@ -5,9 +5,30 @@ A minimalist portfolio website for an artist. Full-stack TypeScript monorepo —
 # Project structure
 
 artist-site/
-¬backend/ -node.js + Express + Typescript
-
-¬seed.ts -sample data dev
+├── backend/ Node.js + Express + TypeScript + pg
+│ ├── src/
+│ │ ├── index.ts App entry point — wires middleware and routes
+│ │ ├── db/
+│ │ │ ├── schema.ts Creates all database tables
+│ │ │ └── seed.ts Example data for development
+│ │ ├── lib/
+│ │ │ └── db.ts PostgreSQL connection pool
+│ │ ├── middleware/
+│ │ │ ├── auth.ts JWT authentication for protected routes
+│ │ │ └── errorHandler.ts Global error handler
+│ │ ├── routes/
+│ │ │ ├── artworks.ts GET /api/artworks Etchings and studies
+│ │ │ ├── exhibitions.ts GET /api/exhibitions
+│ │ │ ├── posts.ts GET /api/posts
+│ │ │ └── contact.ts POST /api/contact
+│ │ └── types/
+│ │ └── index.ts Shared TypeScript types
+│ ├── .env.example Environment variable template
+│ ├── nodemon.json Dev server config
+│ ├── package.json
+│ └── tsconfig.json
+│
+└── frontend/ React 18 + TypeScript + Vite + plain CSS
 
 ## Tech stack
 

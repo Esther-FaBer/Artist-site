@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 
-import worksRouter from "./routes/works";
+import artworksRouter from "./routes/artworks";
 import exhibitionsRouter from "./routes/exhibitions";
 import postsRouter from "./routes/posts";
 import contactRouter from "./routes/contact";

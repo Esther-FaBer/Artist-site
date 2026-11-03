@@ -1,9 +1,5 @@
 /* ─── Studies Page ──────────────────────────────────────────────── */
 
-.studies-page {
-  /* No padding — sections handle their own spacing */
-}
-
 .studies-section {
   min-height: 100vh;
   display: flex;
