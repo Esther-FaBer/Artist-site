@@ -29,6 +29,24 @@ artist-site/
 │ └── tsconfig.json
 │
 └── frontend/ React 18 + TypeScript + Vite + plain CSS
+├── src/
+│ ├── main.tsx React entry point
+│ ├── App.tsx Router and page layout
+│ ├── api.ts All API calls in one place
+│ ├── components/
+│ │ ├── Header.tsx Fixed navigation header
+│ │ └── Header.css
+│ ├── pages/
+│ │ ├── LandingPage.tsx Homepage — hero, carousel, current show, news
+│ │ ├── EtchingsPage.tsx Full scrolling gallery
+│ │ ├── StudiesPage.tsx Works on paper
+│ │ ├── ExhibitionsPage.tsx CV-style exhibition list
+│ │ ├── AboutPage.tsx Artist bio and CV
+│ │ ├── TextsPage.tsx Press and writing list
+│ │ ├── PostPage.tsx Single text
+│ │ └── ContactPage.tsx Enquiry form
+│ ├── styles/
+│ │ └── global.css Design tokens and base reset
 
 ## Tech stack
 
