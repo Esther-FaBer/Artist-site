@@ -17,36 +17,42 @@ artist-site/
 │ │ │ ├── auth.ts JWT authentication for protected routes
 │ │ │ └── errorHandler.ts Global error handler
 │ │ ├── routes/
-│ │ │ ├── artworks.ts GET /api/artworks Etchings and studies
+│ │ │ ├── artworks.ts GET /api/artworks
+│ │ │ ├── bio.ts GET /api/bio
 │ │ │ ├── exhibitions.ts GET /api/exhibitions
 │ │ │ ├── posts.ts GET /api/posts
 │ │ │ └── contact.ts POST /api/contact
 │ │ └── types/
 │ │ └── index.ts Shared TypeScript types
-│ ├── .env.example Environment variable template
-│ ├── nodemon.json Dev server config
+│ ├── .env.example
+│ ├── nodemon.json
 │ ├── package.json
 │ └── tsconfig.json
 │
 └── frontend/ React 18 + TypeScript + Vite + plain CSS
 ├── src/
 │ ├── main.tsx React entry point
-│ ├── App.tsx Router and page layout
+│ ├── App.tsx Router and sidebar layout
 │ ├── api.ts All API calls in one place
 │ ├── components/
-│ │ ├── Header.tsx Fixed navigation header
-│ │ └── Header.css
+│ │ ├── Sidebar.tsx Persistent left navigation
+│ │ └── Sidebar.css
 │ ├── pages/
-│ │ ├── LandingPage.tsx Homepage — hero, carousel, current show, news
-│ │ ├── EtchingsPage.tsx Full scrolling gallery
-│ │ ├── StudiesPage.tsx Works on paper
-│ │ ├── ExhibitionsPage.tsx CV-style exhibition list
-│ │ ├── AboutPage.tsx Artist bio and CV
-│ │ ├── TextsPage.tsx Press and writing list
-│ │ ├── PostPage.tsx Single text
+│ │ ├── LandingPage.tsx Homepage
+│ │ ├── EtchingsPage.tsx Scroll-based finished works
+│ │ ├── StudiesPage.tsx Scroll-based process work
+│ │ ├── AboutPage.tsx Bio, CV and exhibitions
+│ │ ├── NewsPage.tsx External press links
+│ │ ├── PostPage.tsx Single post
 │ │ └── ContactPage.tsx Enquiry form
 │ ├── styles/
 │ │ └── global.css Design tokens and base reset
+│ └── types/
+│ └── index.ts TypeScript types mirroring the database
+├── index.html
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
 
 ## Tech stack
 
@@ -178,14 +184,12 @@ GET  /api/bio                            All bio sections, ordered
 
 ```
 GET  /api/exhibitions                    All exhibitions, newest first
-GET  /api/exhibitions/current            Currently featured exhibition
 ```
 
 ### Posts
 
 ```
 GET  /api/posts                          Published posts only
-GET  /api/posts?type=PRESS               Filter by type
 GET  /api/posts/:slug                    Single post with full body
 ```
 
@@ -202,3 +206,17 @@ GET  /health                             Returns { status: "ok" }
 ```
 
 ---
+
+### Deployment
+
+```
+Database (Supabase)
+  1. Create a new project at supabase.com
+  2. Go to Project Settings → Database → Connection string → URI
+  3. Copy the connection string — it looks like:
+     postgresql://postgres:[password]@db.[ref].supabase.co:5432/postgres
+  4. Run your migrations against it:
+     psql [your-supabase-connection-string] -f backend/src/db/schema.sql
+  5. Optionally seed it:
+     psql [your-supabase-connection-string] -f backend/src/db/seed.sql
+```

@@ -1,33 +1,36 @@
-import { Pool } from 'pg'
-import dotenv from 'dotenv'
+import { Pool } from "pg";
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-})
+  ssl:
+    process.env.NODE_ENV === "production"
+      ? { rejectUnauthorized: false }
+      : false,
+});
 
-pool.on('connect', () => {
-  console.log('Connected to PostgreSQL')
-})
+pool.on("connect", () => {
+  console.log("Connected to PostgreSQL");
+});
 
-pool.on('error', (err) => {
-  console.error('PostgreSQL pool error:', err)
-  process.exit(1)
-})
-
+pool.on("error", (err) => {
+  console.error("PostgreSQL pool error:", err);
+  process.exit(1);
+});
 
 export async function query(text: string, params?: unknown[]) {
-  const start = Date.now()
+  const start = Date.now();
 
-  const result = await pool.query(text, params)
+  const result = await pool.query(text, params);
 
-  if (process.env.NODE_ENV === 'development') {
-    const duration = Date.now() - start
-    console.log('query', { text, duration, rows: result.rowCount })
+  if (process.env.NODE_ENV === "development") {
+    const duration = Date.now() - start;
+    console.log("query", { text, duration, rows: result.rowCount });
   }
 
-  return result
+  return result;
 }
 
-export default pool
+export default pool;
