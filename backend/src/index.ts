@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import bioRouter from "./routes/bio";
 
 import artworksRouter from "./routes/artworks";
 import exhibitionsRouter from "./routes/exhibitions";
@@ -25,10 +26,11 @@ app.use(
 
 // Routes
 
-app.use("/api/works", worksRouter);
+app.use("/api/works", artworksRouter);
 app.use("/api/exhibitions", exhibitionsRouter);
 app.use("/api/posts", postsRouter);
 app.use("/api/contact", contactRouter);
+app.use("/api/bio", bioRouter);
 
 // Health check
 app.get("/health", (_req, res) => {
