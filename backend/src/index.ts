@@ -26,7 +26,7 @@ app.use(
 
 // Routes
 
-app.use("/api/works", artworksRouter);
+app.use("/api/artworks", artworksRouter);
 app.use("/api/exhibitions", exhibitionsRouter);
 app.use("/api/posts", postsRouter);
 app.use("/api/contact", contactRouter);
