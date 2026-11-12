@@ -10,7 +10,9 @@ import ContactPage from "./pages/ContactPage";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+    >
       <div className="app">
         <Sidebar />
         <main className="main-content">
