@@ -68,3 +68,14 @@ ul,
 ol {
   list-style: none;
 }
+
+.site-footer {
+  margin-left: var(--page-padding-h);
+  margin-right: var(--page-padding-h);
+  padding: 40px 0;
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  font-weight: 300;
+  color: var(--color-caption);
+}

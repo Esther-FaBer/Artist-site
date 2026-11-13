@@ -18,13 +18,16 @@ export default function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/etchings" element={<EtchingsPage />} />
             <Route path="/studies" element={<StudiesPage />} />
-            <Route path="/about" element={<AboutPage />} />
             <Route path="/news" element={<NewsPage />} />
             <Route path="/news/:slug" element={<PostPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
+          <footer className="site-footer">
+            <p>Copyright ® {new Date().getFullYear()} Maite Cascón </p>
+          </footer>
         </main>
       </div>
     </BrowserRouter>

@@ -16,7 +16,7 @@ function LandingPage() {
     <main className="page landing-page">
       {/* TODO: Add artist name */}
       <section className="landing-hero">
-        <h1 className="hero-name">Artist Name</h1>
+        <h1 className="hero-name">Maite Cascón</h1>
         <p className="hero-tagline">Painter</p>
       </section>
 
