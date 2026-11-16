@@ -46,26 +46,13 @@ async function seed() {
     INSERT INTO artworks
       (title, slug, year, image_url, thumbnail_url, dimensions, description, medium_id, series_id)
     VALUES
-      ('Untitled I',   'untitled-i',   2024,
-       'https://picsum.photos/seed/art1/800/1000',
-       'https://picsum.photos/seed/art1/400/500',
-       '30 × 40 cm', NULL, $1, $2),
-      ('Untitled II',  'untitled-ii',  2023,
-       'https://picsum.photos/seed/art2/800/1000',
-       'https://picsum.photos/seed/art2/400/500',
-       '30 × 40 cm', NULL, $1, $2),
-      ('Untitled III', 'untitled-iii', 2023,
-       'https://picsum.photos/seed/art3/800/900',
-       'https://picsum.photos/seed/art3/400/450',
-       '20 × 30 cm', NULL, $3, $2),
-      ('Study I',      'study-i',      2024,
-       'https://picsum.photos/seed/art4/600/800',
-       'https://picsum.photos/seed/art4/300/400',
-       '15 × 20 cm', NULL, $4, $5),
-      ('Study II',     'study-ii',     2023,
-       'https://picsum.photos/seed/art5/600/800',
-       'https://picsum.photos/seed/art5/300/400',
-       '15 × 20 cm', NULL, $4, $5)
+      ('Rosa Mystica, 2022',   'Rosa Mystica',   2022,
+       'https://res.cloudinary.com/h2hospdg/image/upload/v1794866719/Rosa_Mystica_2022.png',
+       'https://res.cloudinary.com/h2hospdg/image/upload/v1794866719/Rosa_Mystica_2022.png',
+       '400 x 460 mm', 'Etching and drypoint on paper. Signed in pencil recto, Titled and dated in pencil verso', $1, $2),
+      ('Rosa Mystica, 2022',  'Rosa Mystica',  2022,
+       'https://res.cloudinary.com/h2hospdg/image/upload/v1794866717/Rosa_Mystica_2022_2.png',
+       '325 × 485 mm', 'Etching, drypoint and aquatint on paper, Signed in pencil recto. Titled and dated in pencil verso. Trial proof in purple ink from the second state (with aquatint)', $1, $2),
   `,
     [etching.id, etchings.id, studies.id],
   );
