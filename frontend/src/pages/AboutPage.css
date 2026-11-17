@@ -1,23 +1,33 @@
-/* ─── About Page ───────────────────────────────────────────────── */
+/* ─── About Page ───── */
 
 .about-page {
-  padding-top: calc(var(--header-height) + 56px);
+  padding-top: 56px;
   padding-bottom: 80px;
 }
 
-/* Bio ────────────────────────────────────────────────────────────── */
+/* Intro — portrait + bio ─── */
 
-.about-bio {
+.about-intro {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 48px;
+  align-items: start;
   margin-bottom: 64px;
 }
 
-.about-bio__section {
-  margin-bottom: 32px;
+.about-intro__portrait {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.about-bio__section:last-child {
-  margin-bottom: 0;
+.about-intro__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
+
+/* Bio ──────── */
 
 .about-bio__heading {
   font-family: var(--font-serif);
@@ -37,7 +47,7 @@
   margin: 0;
 }
 
-/* CV ─────────────────────────────────────────────────────────────── */
+/* CV ──────── */
 
 .about-cv {
   border-top: 1px solid var(--color-border);
@@ -68,7 +78,7 @@
   font-size: 0.8125rem;
   color: var(--color-caption);
   margin: 0;
-  padding-top: 2px; /* optical alignment with body baseline */
+  padding-top: 2px;
 }
 
 .about-cv__body {
@@ -78,15 +88,24 @@
   line-height: 1.7;
   color: var(--color-text);
   margin: 0;
-  white-space: pre-line; /* preserves newlines in seed data for multi-line CV entries */
+  white-space: pre-line;
 }
 
-/* Mobile ─────────────────────────────────────────────────────────── */
+/* Mobile ─────────── */
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .about-page {
-    padding-top: calc(var(--header-height) + 32px);
+    padding-top: 32px;
     padding-bottom: 56px;
+  }
+
+  .about-intro {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .about-intro__portrait {
+    max-width: 240px;
   }
 
   .about-cv__group {

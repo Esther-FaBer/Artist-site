@@ -3,6 +3,9 @@ import { fetchBio } from "../api";
 import type { BioSection } from "../types";
 import "./AboutPage.css";
 
+const ARTIST_PORTRAIT =
+  "https://res.cloudinary.com/h2hospdg/image/upload/v1794950860/Maite.png";
+
 export default function AboutPage() {
   const [sections, setSections] = useState<BioSection[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,19 +28,24 @@ export default function AboutPage() {
   return (
     <main className="page about-page">
       <div className="content-column">
-        {/* Bio */}
-        {bioSections.length > 0 && (
-          <section className="about-bio">
+        {/* Portrait + Bio */}
+        <section className="about-intro">
+          <img
+            src={ARTIST_PORTRAIT}
+            alt="Maite Cascón"
+            className="about-intro__portrait"
+          />
+          <div className="about-intro__text">
             {bioSections.map((section) => (
-              <div key={section.id} className="about-bio__section">
+              <div key={section.id}>
                 {section.heading && (
                   <h2 className="about-bio__heading">{section.heading}</h2>
                 )}
                 <p className="about-bio__body">{section.body}</p>
               </div>
             ))}
-          </section>
-        )}
+          </div>
+        </section>
 
         {/* CV */}
         {cvSections.length > 0 && (
@@ -54,7 +62,6 @@ export default function AboutPage() {
           </section>
         )}
 
-        {/* Fallback — no content yet */}
         {sections.length === 0 && (
           <p className="state-empty">No bio content yet.</p>
         )}
