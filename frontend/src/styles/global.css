@@ -18,6 +18,9 @@
   --header-height: 52px;
   --content-width: 680px;
   --page-padding-h: 32px;
+
+  --page-padding-h: 96px;
+  --sidebar-width: 180px;
 }
 
 /* Reset */
@@ -78,4 +81,9 @@ ol {
   font-size: var(--text-caption);
   font-weight: 300;
   color: var(--color-caption);
+}
+
+.content-column {
+  padding: 48px 96 px;
+  max-width: var(--contect-width);
 }

@@ -42,19 +42,22 @@ async function seed() {
 
   // Artworks
   await query(
-    `
-    INSERT INTO artworks
+    `INSERT INTO artworks
       (title, slug, year, image_url, thumbnail_url, dimensions, description, medium_id, series_id)
-    VALUES
-      ('Rosa Mystica, 2022',   'Rosa Mystica',   2022,
-       'https://res.cloudinary.com/h2hospdg/image/upload/v1794866719/Rosa_Mystica_2022.png',
-       'https://res.cloudinary.com/h2hospdg/image/upload/v1794866719/Rosa_Mystica_2022.png',
-       '400 x 460 mm', 'Etching and drypoint on paper. Signed in pencil recto, Titled and dated in pencil verso', $1, $2),
-      ('Rosa Mystica, 2022',  'Rosa Mystica',  2022,
-       'https://res.cloudinary.com/h2hospdg/image/upload/v1794866717/Rosa_Mystica_2022_2.png',
-       '325 × 485 mm', 'Etching, drypoint and aquatint on paper, Signed in pencil recto. Titled and dated in pencil verso. Trial proof in purple ink from the second state (with aquatint)', $1, $2),
-  `,
-    [etching.id, etchings.id, studies.id],
+      VALUES
+      ('Rosa Mystica I', 'rosa-mystica-1', 2022,
+      'https://res.cloudinary.com/h2hospdg/image/upload/v1794866719/Rosa_Mystica_2022.png',
+      'https://res.cloudinary.com/h2hospdg/image/upload/w_600,c_limit/v1794866719/Rosa_Mystica_2022.png',
+      '400 × 460 mm',
+      'Etching and drypoint on paper. Signed in pencil recto, titled and dated in pencil verso.',
+      $1, $2),
+      ('Rosa Mystica II', 'rosa-mystica-2', 2022,
+      'https://res.cloudinary.com/h2hospdg/image/upload/v1794866717/Rosa_Mystica_2022_2.png',
+      'https://res.cloudinary.com/h2hospdg/image/upload/w_600,c_limit/v1794866717/Rosa_Mystica_2022_2.png',
+      '325 × 485 mm',
+      'Etching, drypoint and aquatint on paper. Signed in pencil recto. Titled and dated in pencil verso. Trial proof in purple ink from the second state (with aquatint).',
+      $1, $2)`,
+    [etching.id, etchings.id],
   );
 
   // Exhibitions
@@ -90,7 +93,7 @@ async function seed() {
        'Woolwich Contemporary Print Fair, London, 2024
         Summer Show, Royal Academy, London, 2024
         Verbatim, London Original Print Fair, Somerset House, London, 2024
-        Strange Devotion, Eames Fine Art Collectors' Studio, London, 2024
+        Strange Devotion, Eames Fine Art Collectors'' Studio, London, 2024
         Verbatim, London Original Print Fair, Somerset House, London, 2023
         RAMAS / Francisco de Goya / Maite Cascón, Eames Fine Art Print Room, London, 2022
         The Contemporary Young Artist Award, The Biscuit Factory Foundation, Newcastle, 2020
