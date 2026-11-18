@@ -24,7 +24,7 @@ export default function Sidebar() {
   return (
     <aside className={`sidebar${menuOpen ? " sidebar--open" : ""}`}>
       <NavLink to="/" className="sidebar__name" onClick={closeMenu}>
-        Maite Cascon
+        Maite Cascón
       </NavLink>
 
       {/* Mobile hamburger */}

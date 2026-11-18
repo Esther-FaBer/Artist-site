@@ -21,6 +21,9 @@
 
   --page-padding-h: 96px;
   --sidebar-width: 180px;
+
+  --sidebar-width: 180px;
+  --page-padding-h: 96px;
 }
 
 /* Reset */
@@ -84,6 +87,24 @@ ol {
 }
 
 .content-column {
-  padding: 48px 96 px;
-  max-width: var(--contect-width);
+  padding-top: 48px;
+  padding-bottom: 80px;
+  max-width: var(--content-width);
+}
+
+.app {
+  display: flex;
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  flex: 1;
+  padding-left: var(--page-padding-h);
+  padding-right: var(--page-padding-h);
+}
+
+.sidebar {
+  padding-left: 30px;
+  padding-top: 20px;
 }

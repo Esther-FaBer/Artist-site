@@ -14,10 +14,9 @@ function LandingPage() {
 
   return (
     <main className="page landing-page">
-      {/* TODO: Add artist name */}
       <section className="landing-hero">
         <h1 className="hero-name">Maite Cascón</h1>
-        <p className="hero-tagline">Painter</p>
+        <p className="hero-tagline">Artist</p>
       </section>
 
       {latestPost && (

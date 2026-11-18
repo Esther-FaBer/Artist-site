@@ -9,22 +9,19 @@
 
 .about-intro {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 1fr 320px;
   gap: 48px;
   align-items: start;
   margin-bottom: 64px;
 }
 
-.about-intro__portrait {
-  width: 100%;
-  height: auto;
-  display: block;
+.about-intro__text {
+  grid-column: 1;
 }
 
-.about-intro__text {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+.about-intro__portrait {
+  grid-column: 2;
+  margin-top: 4px;
 }
 
 /* Bio ──────── */
@@ -66,7 +63,7 @@
 
 .about-cv__group {
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 140px 1fr;
   gap: 0 32px;
   margin-bottom: 24px;
   align-items: baseline;

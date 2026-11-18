@@ -30,11 +30,6 @@ export default function AboutPage() {
       <div className="content-column">
         {/* Portrait + Bio */}
         <section className="about-intro">
-          <img
-            src={ARTIST_PORTRAIT}
-            alt="Maite Cascón"
-            className="about-intro__portrait"
-          />
           <div className="about-intro__text">
             {bioSections.map((section) => (
               <div key={section.id}>
@@ -45,6 +40,11 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
+          <img
+            src={ARTIST_PORTRAIT}
+            alt="Maite Cascón"
+            className="about-intro__portrait"
+          />
         </section>
 
         {/* CV */}
