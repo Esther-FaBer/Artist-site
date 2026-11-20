@@ -126,3 +126,52 @@
     font-size: 1.125rem;
   }
 }
+
+/* ─── Sidebar footer ────────────────────────────────────────────── */
+
+.sidebar__footer {
+  position: fixed;
+  bottom: 40px;
+  left: 0;
+  width: var(--sidebar-width);
+  padding-left: 32px;
+  padding-right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.sidebar__copyright {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--color-caption);
+  margin: 0;
+}
+
+.sidebar__social {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.sidebar__social-link {
+  color: var(--color-caption);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s ease;
+}
+
+.sidebar__social-link:hover {
+  color: var(--color-text);
+}
+
+/* Hide footer - mobile menu */
+@media (max-width: 768px) {
+  .sidebar__footer {
+    display: none;
+  }
+}
