@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 
 const NAV_LINKS = [
+  { to: "/about", label: "About" },
   { to: "/etchings", label: "Etchings" },
   { to: "/studies", label: "Studies" },
-  { to: "/about", label: "About" },
   { to: "/news", label: "News" },
   { to: "/contact", label: "Contact" },
 ];
