@@ -56,7 +56,30 @@ async function seed() {
       'https://res.cloudinary.com/h2hospdg/image/upload/w_600,c_limit/v1794866717/Rosa_Mystica_2022_2.png',
       '325 × 485 mm',
       'Etching, drypoint and aquatint on paper. Signed in pencil recto. Titled and dated in pencil verso. Trial proof in purple ink from the second state (with aquatint).',
-      $1, $2)`,
+      $1, $2), 
+      ('Requiem Party', 'requiem-party', 2023,
+      'https://res.cloudinary.com/h2hospdg/image/upload/v1794864637/Requiem_Party_2023.png',
+      'https://res.cloudinary.com/h2hospdg/image/upload/v1794864637/Requiem_Party_2023.png',
+      'Image size 495 x 360 mm', 
+      'Paper size: 535 x 400 mm',
+      'Etching with aquatint on paper. Signed and titled in pencil Numbered from the edition of 20', 
+      $1, $2),
+      ('There She Is', 'there-she-is', 2024,
+      'https://res.cloudinary.com/h2hospdg/image/upload/v1794864642/There_She_Is_2024.png',
+      'https://res.cloudinary.com/h2hospdg/image/upload/v1794864642/There_She_Is_2024.png'
+      'Image and paper size: 480 x 735 mm',
+      'Monotype on paper. Signed in pencil. A unique work.'
+      $1, $2),
+      ('Strange Devotion (Devoción Extraña)', 2024,
+      'https://res.cloudinary.com/h2hospdg/image/upload/v1794864639/Strange_Devotion_Devocio%CC%81n_Extran%CC%83a_2024.png',
+      'https://res.cloudinary.com/h2hospdg/image/upload/v1794864639/Strange_Devotion_Devocio%CC%81n_Extran%CC%83a_2024.png',
+      'Image size: 160 x 245 mm',
+      'Paper size: 290 x 390 mm',
+      'Etching with aquatint on paper. Signed in pencil. Numbered from the edition of 20 Image.',
+      )
+
+
+      `),
     [etching.id, etchings.id],
   );
 

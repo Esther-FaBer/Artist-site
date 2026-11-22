@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import LandingPage from "./pages/LandingPage";
-import EtchingsPage from "./pages/EtchingsPage";
 import StudiesPage from "./pages/StudiesPage";
 import AboutPage from "./pages/AboutPage";
 import NewsPage from "./pages/NewsPage";
 import PostPage from "./pages/PostPage";
 import ContactPage from "./pages/ContactPage";
+import EtchingsPage from "./pages/EtchingsPage";
 
 export default function App() {
   return (
@@ -26,7 +26,9 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
           <footer className="site-footer">
-            <p>Copyright ® {new Date().getFullYear()} Maite Cascón </p>
+            <p>
+              All rights reserved ® {new Date().getFullYear()} Maite Cascón{" "}
+            </p>
           </footer>
         </main>
       </div>

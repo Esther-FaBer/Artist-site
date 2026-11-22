@@ -4,7 +4,7 @@ import "./Sidebar.css";
 
 const NAV_LINKS = [
   { to: "/about", label: "About" },
-  { to: "/etchings", label: "Etchings" },
+  { to: "/series", label: "Series" },
   { to: "/studies", label: "Studies" },
   { to: "/news", label: "News" },
   { to: "/contact", label: "Contact" },
