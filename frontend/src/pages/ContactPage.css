@@ -82,14 +82,16 @@
   font-weight: 300;
   font-size: 0.9375rem;
   color: var(--color-text);
-  background: transparent;
+  background: #f7f7f5;
   border: none;
   border-bottom: 1px solid var(--color-border);
-  border-radius: 0;
-  padding: 8px 0;
+  border-radius: 2px;
+  padding: 10px 14px;
   width: 100%;
   outline: none;
-  transition: border-color 0.15s ease;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -97,7 +99,8 @@
 .contact-form__input:focus,
 .contact-form__select:focus,
 .contact-form__textarea:focus {
-  border-bottom-color: var(--color-text);
+  background: #f2f2ef;
+  border-bottom-color: var(--color-border);
 }
 
 .contact-form__textarea {
