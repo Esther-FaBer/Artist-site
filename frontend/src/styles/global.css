@@ -114,3 +114,9 @@ ol {
   padding-left: 30px;
   overflow-y: auto;
 }
+
+img {
+  pointer-events: none; /* security to protect image */
+  user-select: none;
+  -webkit-user-drag: none;
+}

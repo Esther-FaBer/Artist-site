@@ -37,6 +37,8 @@ export default function EtchingsPage() {
               alt={artwork.title}
               className="etchings-section__img"
               loading={index === 0 ? "eager" : "lazy"}
+              onContextMenu={(e) => e.preventDefault()}
+              draggable={false}
             />
           </div>
 
